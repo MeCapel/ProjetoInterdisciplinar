@@ -1,0 +1,88 @@
+﻿@model ProjetoInterdisciplinar.ViewModels.PFDtoViewModel
+@{
+    ViewData["Title"] = "Edit pf";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container d-flex justify-content-center p-5">
+
+    <div class="row">
+
+        <!-- DIV -->
+        <div class="border border-dark rounded-2 bg-white p-4" style="width: 50vw;">
+
+            <!-- TITLE -->
+            <div class="text-center">
+                <p class="fs-4 fs-md-2 fw-bold text-secondary">Editar</p>
+            </div>
+
+            <form asp-action="PFEdit" method="post">
+                @Html.AntiForgeryToken()
+
+                <!-- Id -->
+                <div class="form-group">
+                    <label asp-for="Id" class="form-label"></label>
+                    <input class="col-12 form-control border border-dark rounded-2 mb-4"
+                           asp-for="Id" readonly>
+                </div>
+
+                <!-- Name -->
+                <div class="form-group">
+                    <label asp-for="Name" class="form-label"></label>
+                    <input class="col-12 form-control border border-dark rounded-2 mb-4"
+                           asp-for="Name">
+                </div>
+
+
+                <!-- Sobrenome -->
+                <div class="form-group">
+                    <label asp-for="Surname" class="form-label"></label>
+                    <input class="col-12 form-control border border-dark rounded-2 mb-4"
+                           asp-for="Surname">
+                </div>
+
+
+                <div class="row justify-content-between">
+                    <!-- Nascimento -->
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                            <label asp-for="BirthDate">Nascimento:</label>
+                            <input class="form-control border border-dark rounded-2 mb-4"
+                                   type="date" asp-for="BirthDate">
+                        </div>
+                    </div>
+
+                    <!-- Sexo -->
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Sex">Sexo:</label>
+                            <select class="form-control border border-dark rounded-2 mb-4 form-select"
+                                    asp-for="Sex">
+                                <option value="Masculino">Masculino</option>
+                                <option value="Feminino">Feminino</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Habilitado(a) -->
+                <div class="form-group">
+                    <input class="col-12 form-check-input border border-dark rounded-2 mb-4"
+                           asp-for="Able" type="checkbox">
+                    <label asp-for="Able" class="form-check-label"></label>
+                </div>
+
+
+                <div class="container d-flex justify-content-center py-3">
+                    <input class="col-12 btn btn-dark border border-dark" type="submit" value="Salvar">
+                </div>
+
+                <div class="text-center">
+                    <a asp-controller="UsersMngmt" asp-action="PFList" class="text-decoration-none">Voltar</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

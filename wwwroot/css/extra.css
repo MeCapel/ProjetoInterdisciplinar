@@ -1,0 +1,25 @@
+﻿:root {
+    --verde_main: #00ac70;
+    --azul_main: #263f8c;
+    --azul_transparent: #6481e18e;
+    --custom-gradient: linear-gradient(-75deg, var(--azul_main), var(--verde_main));
+    --div-medium: 450px;
+    --cinza1: #a6a6a6;
+}
+
+.custom-badge {
+    color: var(--azul_main);
+    padding: .50em;
+    margin: .35em 0;
+    background-color: var(--azul_transparent);
+}
+
+.custom-position-top {
+    position: relative;
+    top: -62.5px;
+}
+
+.custom-img-circle {
+    height: 125px;
+    width: 125px;
+}

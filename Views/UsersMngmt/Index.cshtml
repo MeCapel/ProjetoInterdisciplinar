@@ -1,0 +1,62 @@
+﻿@model ProjetoInterdisciplinar.ViewModels.UsersMngmtViewModel
+@{
+    ViewData["Title"] = "Users management";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container py-4">
+    <h1 class="">Gerenciamento de users</h1>
+
+    <div class="py-2">
+        <a class="btn btn-outline-secondary" asp-controller="UsersMngmt" asp-action="PFList">Listar pessoas fisicas</a>
+        <a class="btn btn-outline-secondary" asp-controller="UsersMngmt" asp-action="PJList">Listar pessoas juridicas</a>
+    </div>
+
+    <hr>
+
+    <div class="row">
+
+        <div class="col-12 col-md-6 gap-2 py-2">
+
+            <h2>Pessoas fisicas</h2>
+
+            <div class="d-flex flex-wrap my-3">
+                @foreach (var user in Model.PFUsers)
+                {
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">@user.Name @user.Surname</h5>
+                            <h6 class="card-subtitle mb-2 text-body-secondary">@user.UserName</h6>
+                            <h6 class="card-subtitle mb-2 text-body-secondary">@user.BirthDate.ToString("dd/MM/yyyy")</h6>
+                            <h6 class="card-subtitle mb-2 text-body-secondary">@user.Sex</h6>
+                            <h6 class="card-subtitle mb-2 text-body-secondary">@user.Able</h6>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 gap-2 my-2">
+
+            <h2>Pessoas juridicas</h2>
+
+            <div class="d-flex flex-wrap my-3">
+                @foreach (var user in Model.PJUsers)
+                {
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">@user.Name</h5>
+                            <h6 class="card-subtitle mb-2 text-body-secondary">@user.UserName</h6>
+                            <h6 class="card-subtitle mb-2 text-body-secondary">@user.CNPJ</h6>
+                            <h6 class="card-subtitle mb-2 text-body-secondary">@user.Ramo</h6>
+                            <h6 class="card-subtitle mb-2 text-body-secondary">@user.Able</h6>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+    </div>
+
+</div>
+

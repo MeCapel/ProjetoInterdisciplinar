@@ -1,0 +1,34 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<AppUsers> signInManager;
+@inject UserManager<AppUsers> userManager
+@using System.Security.Claims
+
+
+<ul class="nav navbar-nav navbar-right">
+    @if (signInManager.IsSignedIn(User))
+    {
+        <li>
+            <a class="btn btn-outline-secondary navbar-btn navbar-link" asp-controller="Account" asp-action="Logout">Logout</a>
+        </li>
+    }
+    else
+    {
+
+    <!-- CREATE ACCOUNT / LOGIN BUTTON -->
+    <ul class="d-flex navbar-nav align-items-center gap-2">
+        <li class="nav-item dropdown btn btn-outline-primary p-0">
+                <a class="nav-link dropdown-toggle fw-semibold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Criar conta
+            </a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" asp-controller="Account" asp-action="PFRegister">Conta PF</a></li>
+                <li><a class="dropdown-item" asp-controller="Account" asp-action="PJRegister">Conta PJ</a></li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a class="btn btn-dark px-4" asp-controller="Account" asp-action="Login">ENTRAR</a>
+        </li>
+    </ul>
+
+}
+</ul>
