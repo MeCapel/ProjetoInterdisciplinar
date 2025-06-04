@@ -23,6 +23,7 @@ namespace ProjetoInterdisciplinar.Controllers
             this.context = context;
         }
 
+
         public IActionResult Login()
         {
             return View();
@@ -50,7 +51,7 @@ namespace ProjetoInterdisciplinar.Controllers
             {
                 if (user.Discriminator == "Admin")
                 {
-                    return RedirectToAction("Index", "UsersMngmt");
+                    return RedirectToAction("IndexAdmin", "Home");
                 }
                 else
                 {
@@ -128,6 +129,12 @@ namespace ProjetoInterdisciplinar.Controllers
                     UserName = model.Email,
                     Able = false
                 };
+
+                if (!PJUser.IsCnpj(user.CNPJ))
+                {
+                    ModelState.AddModelError(nameof(model.CNPJ), "CNPJ inválido!");
+                    return View(model);
+                }
 
                 var result = await userManager.CreateAsync(user, model.Password);
 

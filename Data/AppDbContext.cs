@@ -7,6 +7,7 @@ namespace ProjetoInterdisciplinar.Data
 {
     public class AppDbContext : IdentityDbContext<AppUsers>
     {
+        public DbSet<Vaga> Vagas { get; set; }
 
         public AppDbContext(DbContextOptions options) : base(options)
         {

@@ -1,7 +1,7 @@
 ﻿@model ProjetoInterdisciplinar.ViewModels.UsersMngmtViewModel
 @{
     ViewData["Title"] = "Users management";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    // Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <div class="container py-4">
@@ -16,11 +16,11 @@
 
     <div class="row">
 
-        <div class="col-12 col-md-6 gap-2 py-2">
+        <div class="col-12 col-md-6 py-2">
 
             <h2>Pessoas fisicas</h2>
 
-            <div class="d-flex flex-wrap my-3">
+            <div class="d-flex flex-wrap gap-3 my-3">
                 @foreach (var user in Model.PFUsers)
                 {
                     <div class="card" style="width: 18rem;">
@@ -40,7 +40,7 @@
 
             <h2>Pessoas juridicas</h2>
 
-            <div class="d-flex flex-wrap my-3">
+            <div class="d-flex flex-wrap gap-3 my-3">
                 @foreach (var user in Model.PJUsers)
                 {
                     <div class="card" style="width: 18rem;">

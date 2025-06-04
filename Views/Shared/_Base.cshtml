@@ -1,0 +1,61 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<AppUsers> signInManager;
+@inject UserManager<AppUsers> userManager
+@using System.Security.Claims
+
+
+<ul class="nav navbar-nav">
+
+    @if (!signInManager.IsSignedIn(User) || (signInManager.IsSignedIn(User) && this.User.IsInRole("PF")))
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Vagas" asp-action="VagasList">VAGAS</a>
+        </li>
+        <!--
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Cursos" asp-action="Index">CURSOS</a>
+        </li>
+        -->
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                INSTITUCIONAL
+            </a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Suporte">Suporte</a></li>
+                <li><a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="SobreNos">Sobre nós</a></li>
+            </ul>
+        </li>
+    }
+    @if (signInManager.IsSignedIn(User) && this.User.IsInRole("PJ"))
+    {
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                GERENCIAMENTO
+            </a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" asp-area="" asp-controller="Vagas" asp-action="VagasListPJ">de vagas</a></li>
+            </ul>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                INSTITUCIONAL
+            </a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Suporte">Suporte</a></li>
+                <li><a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="SobreNos">Sobre nós</a></li>
+            </ul>
+        </li>
+    }
+    @if (signInManager.IsSignedIn(User) && this.User.IsInRole("Admin"))
+    {
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                GERENCIAMENTO
+            </a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" asp-area="" asp-controller="UsersMngmt" asp-action="Index">de users</a></li>
+                <li><a class="dropdown-item" asp-area="" asp-controller="Vagas" asp-action="VagasListAdmin">de vagas</a></li>
+            </ul>
+        </li>
+    }
+</ul>

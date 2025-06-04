@@ -32,21 +32,7 @@
                 <!-- NAV LINKS -->
                 <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
                     <ul class="navbar-nav gap-3">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Vagas" asp-action="Index">VAGAS</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Cursos" asp-action="Index">CURSOS</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                INSTITUCIONAL
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Suporte">Suporte</a></li>
-                                <li><a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Sobre_nos">Sobre nós</a></li>
-                            </ul>
-                        </li>
+                        <partial name="_Base" />
                     </ul>
                 </div>
 
@@ -82,14 +68,15 @@
                     <p class="fs-3">Candidatos</p>
                     <ul class="list-unstyled m-0">
                         <li>
+                            <!--
                             <a class="text-decoration-none" asp-area="" asp-controller="" asp-action="">
                                 <p class="fs-4 my-0">Perfil candidato</p>
                             </a>
                             <a class="text-decoration-none" asp-area="" asp-controller="" asp-action="">
-                                <p class="fs-4 my-0">Vagas</p>
-                            </a>
-                            <a class="text-decoration-none" asp-area="" asp-controller="" asp-action="">
                                 <p class="fs-4 my-0">Cursos</p>
+                            </a>-->
+                            <a class="text-decoration-none" asp-area="" asp-controller="" asp-action="">
+                                <p class="fs-4 my-0">Vagas</p>
                             </a>
                         </li>
                     </ul>
@@ -99,12 +86,14 @@
                     <p class="fs-3">Empresas</p>
                     <ul class="list-unstyled m-0">
                         <li>
+                            <!--
                             <a class="text-decoration-none" asp-area="" asp-controller="" asp-action="">
                                 <p class="fs-4 my-0">Perfil empresa</p>
                             </a>
                             <a class="text-decoration-none" asp-area="" asp-controller="" asp-action="">
                                 <p class="fs-4 my-0">Anúncios</p>
                             </a>
+                            -->
                         </li>
                     </ul>
                 </div>
@@ -116,7 +105,7 @@
                             <a class="text-decoration-none" asp-area="" asp-controller="Home" asp-action="Suporte">
                                 <p class="fs-4 my-0">Suporte</p>
                             </a>
-                            <a class="text-decoration-none" asp-area="" asp-controller="Home" asp-action="Sobre_nos">
+                            <a class="text-decoration-none" asp-area="" asp-controller="Home" asp-action="SobreNos">
                                 <p class="fs-4 my-0">Sobre nós</p>
                             </a>
                         </li>
@@ -129,7 +118,7 @@
             <!-- EXTRAS -->
             <div class="d-flex align-items-center justify-content-between">
                 <p class="fs-4 m-0">2024 -</p>
-                <a href="https://github.com/MeCapel/emprega_matao">
+                <a href="https://github.com/MeCapel/ProjetoInterdisciplinar">
                     <img src="~/imgs/icons/github.svg" alt="Icone github">
                 </a>
             </div>

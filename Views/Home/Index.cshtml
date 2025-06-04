@@ -2,7 +2,119 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!-- HERO / BARRA DE PESQUISA  -->
+<section class="container-fluid d-flex align-items-center justify-content-center py-5"
+         style="background: var(--custom-gradient)">
+
+    <div class="container d-flex align-items-center justify-content-between">
+
+        <!-- CONTAINER BARRA DE PESQUISA -->
+        <div class="col-md-7 col-12 bg-light border border-dark rounded-1 p-4" id="div_pesquisa">
+            <p class="fs-4 fw-semibold">QUE VAGA VOCÊ PROCURA?</p>
+            <form class="d-sm-flex column-gap-3" role="search">
+                <input class="col-12 col-sm form-control border border-dark"
+                       type="search" placeholder="Cargo ou palavra-chave" aria-label="Search">
+                <button class="col-12 col-sm-4 btn btn-secondary border border-dark"
+                        type="submit">
+                    <img src="imgs/outros/search.svg" alt="">
+                </button>
+            </form>
+        </div>
+
+        <!-- CONTAINER IMG ASIDE -->
+        <div class="col-md-5 d-none d-md-block px-4">
+            <img class="w-100" src="imgs/imagens/desenho1.svg" alt="">
+        </div>
+    </div>
+</section>
+
+<!-- SECTION SEJA BEM-VINDO -->
+<section class="d-flex align-items-center justify-content-center py-5">
+    <div class="container">
+        <div class="row align-items-center justify-content-center g-5">
+
+            <!-- IMG DA CIDADE -->
+            <div class="col-md-6 col-12">
+                <img class="img-fluid object-fit-cover h-100 w-100 rounded border border-dark" style="height: 450px;" src="imgs/imagens/matao.webp" alt="Cidade de Matão">
+            </div>
+
+            <!-- CONTAINER TEXTO DE SAUDAÇÃO -->
+            <div class="col-md-6 col-12 tetx-md-start">
+                <p class="fs-2 fw-semibold">Bem-vindo(a)!</p>
+                <p class="fs-5">Está a procura de um novo emprego?</p>
+                <p class="fs-5">Você está no lugar certo! Insira no campo de pesquisa o cargo ou a sua área de atuação.</p>
+                <p class="fs-5">Veja as oportunidades surgirem!</p>
+
+                <!-- BTN LINK PARA CRIAR CONTA -->
+                <a class="btn btn-secondary rounded-circle p-2" asp-controller="Account" asp-action="PFRegister">
+                    <img class="img-fluid" style="height: 50px; transform: rotate(-45deg);"
+                         src="imgs/outros/arrow foward.svg" alt="Botão direconal para a criação de uma nova conta">
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="container">
+
+<!-- SECTION PREVIEW INDICAÇÕES DE CURSOS -->
+<section class="container-fluid py-4">
+
+    <!-- <div class="container">
+        <p class="fs-2 fw-bold text-center text-primary">Indicações de cursos</p>
+        <p class="fs-5 text-center">Encontre na área "Cursos" a capacitação que vai te fazer decolar em sua carreira!</p>
+    </div> -->
+    <!-- <div class="card" style="width: 18rem;">
+      <img src="imgs/imagens/matao.webp" class="card-img-top" alt="...">
+      <div class="card-body">
+        <span class="badge custom-badge rounded-pill">Primary</span>
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+    </div> -->
+
+</section>
+
+<!-- SECTION FEEDBACKS -->
+<section class="container-fluid bg-primary py-5">
+    <div class="container">
+
+        <!-- DIV TITULO E PARAGRAFO INTRO -->
+        <div class="col-12">
+            <p class="fs-2 fw-bold text-white">Feedbacks</p>
+            <p class="fs-4 text-white">Confira o que os usuários estão achando do site</p>
+        </div>
+
+        <!-- DIV FEEDBACK CARDS -->
+        <div class="row align-items-center justify-content-center row-cols-1 row-cols-md-2 g-4 py-3">
+
+            <!-- FEEDBACK CARD 1 -->
+            <div class="col">
+                <div class="bg-light p-4 rounded-1 border border-dark">
+                    <div class="d-flex align-items-center gap-3">
+                        <img src="imgs/imagens/matao.webp" alt="" class="rounded-circle object-fit-cover img-fluid"
+                             style="height: 50px; width: 50px;">
+                        <p class="fs-4 m-0">Nome do user</p>
+                    </div>
+                    <div class="my-3">
+                        <p class="fs-4">"Aqui vai o comentário"</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FEEDBACK CARD 2 -->
+            <div class="col">
+                <div class="bg-light p-4 rounded-1 border border-dark">
+                    <div class="d-flex align-items-center gap-3">
+                        <img src="imgs/imagens/matao.webp" alt="" class="rounded-circle object-fit-cover img-fluid"
+                             style="height: 50px; width: 50px;">
+                        <p class="fs-4 m-0">Nome do user</p>
+                    </div>
+                    <div class="my-3">
+                        <p class="fs-4">"Aqui vai o comentário"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

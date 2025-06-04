@@ -1,11 +1,15 @@
-﻿@model List<PJUser>
+﻿@model List<Vaga>
 @{
-    ViewData["Title"] = "PJ users list";
+    ViewData["Title"] = "Vagas list";
     // Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <div class="container py-4">
-    <h1 class="">Pessoas juridicas</h1>
+    <h1 class="">Gerenciamento de vagas</h1>
+
+    <div class="py-2">
+        <a class="btn btn-outline-secondary" asp-controller="Vagas" asp-action="Create">Adicionar vaga</a>
+    </div>
 
     <hr>
 
@@ -17,27 +21,29 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Email</th>
-                        <th>Nome</th>
-                        <th>Ramo</th>
-                        <th>CNPJ</th>
-                        <th>Able</th>
+                        <th>Cargo</th>
+                        @* <th>Descrição</th> *@
+                        <th>Salário</th>
+                        <th>PJId</th>
+                        <th>Postagem</th>
+                        @* <th>Able</th> *@
                     </tr>
                 </thead>
 
                 <tbody>
-                    @foreach (var user in Model)
+                    @foreach (var vaga in Model)
                     {
                         <tr>
-                            <td>@user.Id</td>
-                            <td>@user.Email</td>
-                            <td>@user.Name</td>
-                            <td>@user.Ramo</td>
-                            <td>@user.CNPJ</td>
-                            <td>@user.Able</td>
+                            <td>@vaga.Id</td>
+                            <td>@vaga.Cargo</td>
+                            @* <td>@vaga.Descricao</td> *@
+                            <td>@vaga.Salario</td>
+                            <td>@vaga.PJId</td>
+                            <td>@vaga.Post.ToString("dd/MM/yyyy")</td>
+                            @* <td>@vaga.Able</td> *@
                             <td style="white-space: nowrap;">
-                                <a class="btn btn-outline-primary" asp-controller="UsersMngmt" asp-action="Edit" asp-route-id="@user.Id">Editar</a>
-                                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal" data-userid="@user.Id" data-username="@user.Name">
+                                <a class="btn btn-outline-primary" asp-controller="Vagas" asp-action="Edit" asp-route-id="@vaga.Id">Editar</a>
+                                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal" data-userid="@vaga.Id" data-username="@vaga.Cargo">
                                     Delete
                                 </button>
                             </td>
@@ -54,7 +60,7 @@
 <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form id="deleteForm" method="post" asp-controller="UsersMngmt" asp-action="Delete">
+            <form id="deleteForm" method="post" asp-controller="Vagas" asp-action="Delete">
                 @Html.AntiForgeryToken()
 
                 <div class="modal-header">
@@ -63,7 +69,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <p>Tem certeza que deseja excluir <strong id="userNameToDelete"></strong>?</p>
+                    <p>Tem certeza que deseja excluir a vaga de <strong id="userNameToDelete"></strong>?</p>
                     <input type="hidden" name="id" id="userIdToDelete" />
                 </div>
 
