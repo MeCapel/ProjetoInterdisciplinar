@@ -19,13 +19,6 @@
             <form asp-action="PFEdit" method="post">
                 @Html.AntiForgeryToken()
 
-                <!-- Id -->
-                <div class="form-group">
-                    <label asp-for="Id" class="form-label"></label>
-                    <input class="col-12 form-control border border-dark rounded-2 mb-4"
-                           asp-for="Id" readonly>
-                </div>
-
                 <!-- Name -->
                 <div class="form-group">
                     <label asp-for="Name" class="form-label"></label>

@@ -23,3 +23,8 @@
     height: 125px;
     width: 125px;
 }
+
+#eyeBtn {
+    pointer-events: auto;
+    z-index: 10;
+}

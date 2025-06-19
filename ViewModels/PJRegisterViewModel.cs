@@ -1,19 +1,23 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
 
 namespace ProjetoInterdisciplinar.ViewModels
 {
+    [Index("Email", IsUnique = true)]
+    [Index("CNPJ", IsUnique = true)]
     public class PJRegisterViewModel
     {
         [Required(ErrorMessage = "O seguinte campo é necessário")]
         [StringLength(35, MinimumLength = 2, ErrorMessage = "Entre 2 - 35 caracteres")]
+        [RegularExpression(@"^[a-zA-Z]+[ a-zA-Z-_]*$", ErrorMessage = "Somente letras")]
         [Display(Name = "Nome")]
         public string Name { get; set; }
 
 
 
-
         [Required(ErrorMessage = "O seguinte campo é necessário")]
         [StringLength(14, ErrorMessage = "Deve conter 14 careacteres")]
+        [RegularExpression(@"^-?[0-9][0-9,\.]+$", ErrorMessage = "Somente numeros")]
         [Display(Name = "CNPJ")]
         public string CNPJ { get; set; }
 
@@ -22,6 +26,7 @@ namespace ProjetoInterdisciplinar.ViewModels
 
         [Required(ErrorMessage = "O seguinte campo é necessário")]
         [StringLength(50, MinimumLength = 2, ErrorMessage = "Entre 2 - 50 caracteres")]
+        [RegularExpression(@"^[a-zA-Z]+[ a-zA-Z-_]*$", ErrorMessage = "Somente letras")]
         [Display(Name = "Ramo")]
         public string Ramo { get; set; }
 

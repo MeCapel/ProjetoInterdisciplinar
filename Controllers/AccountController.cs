@@ -51,7 +51,7 @@ namespace ProjetoInterdisciplinar.Controllers
             {
                 if (user.Discriminator == "Admin")
                 {
-                    return RedirectToAction("IndexAdmin", "Home");
+                    return RedirectToAction("Index", "UsersMngmt");
                 }
                 else
                 {

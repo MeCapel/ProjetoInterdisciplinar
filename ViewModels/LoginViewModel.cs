@@ -12,7 +12,7 @@ namespace ProjetoInterdisciplinar.ViewModels
 
 
         [Required(ErrorMessage = "O seguinte campo é necessário")]
-        [StringLength(25, ErrorMessage = "Até 25 caracteres")]
+        [StringLength(26, ErrorMessage = "Até 25 caracteres")]
         [Display(Name = "Senha")]
         [DataType(DataType.Password)]
         public string Password { get; set; }

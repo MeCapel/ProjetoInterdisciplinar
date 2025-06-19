@@ -47,8 +47,7 @@
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label asp-for="BirthDate">Nascimento:</label>
-                                <input class="form-control border border-dark rounded-2 mb-4"
-                                       type="date" asp-for="BirthDate">
+                                <input class="form-control border border-dark rounded-2 mb-4" asp-for="BirthDate" type="date" id="BirthDate">
                                 <span asp-validation-for="BirthDate" class="text-danger"></span>
                             </div>
                         </div>
@@ -78,26 +77,30 @@
 
 
                     <!-- Senha -->
-                    <div class="form-group">
+                    <div class="form-group mb-4">
                         <label asp-for="Password" class="form-label"></label>
-                        <input class="col-12 form-control border border-dark rounded-2 mb-4"
-                               asp-for="Password">
+                        <div class="position-relative">
+                            <input id="password" class="col-12 form-control border border-dark rounded-2 pe-5" asp-for="Password" type="password">
+                            <i class="fa-regular fa-eye-slash position-absolute" id="eyeBtn" style=" top: 50%; right: 20px; transform: translateY(-50%); cursor: pointer;"></i>
+                        </div>
                         <span asp-validation-for="Password" class="text-danger"></span>
                     </div>
 
 
                     <!-- Confirmar senha -->
-                    <div class="form-group">
+                    <div class="form-group mb-4">
                         <label asp-for="ConfirmPassword" class="form-label"></label>
-                        <input class="col-12 form-control border border-dark rounded-2 mb-4"
-                               asp-for="ConfirmPassword">
+                        <div class="position-relative">
+                            <input id="confirmPassword" class="col-12 form-control border border-dark rounded-2 pe-5" asp-for="ConfirmPassword" type="password">
+                            <i class="fa-regular fa-eye-slash position-absolute" id="eyeBtnConfirm" style=" top: 50%; right: 20px; transform: translateY(-50%); cursor: pointer;"></i>
+                        </div>
                         <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                     </div>
 
 
 
                     <div class="container d-flex justify-content-center py-3">
-                        <input class="col-12 btn btn-dark border border-dark" type="submit" value="Registrar">
+                        <input class="col-3 btn btn-dark border border-dark" type="submit" value="Registrar">
                     </div>
 
                     <div class="text-center">
@@ -109,6 +112,72 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    const eyeBtn = document.getElementById('eyeBtn');
+    const password = document.getElementById('password');
+    eyeBtn.addEventListener('click', function ()
+    {
+        const type = password.getAttribute('type') == 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        this.classList.toggle('fa-eye-slash');
+        this.classList.toggle('fa-eye');
+    });
+
+    const eyeBtnConfirm = document.getElementById('eyeBtnConfirm');
+    const confirmPassword = document.getElementById('confirmPassword');
+    eyeBtnConfirm.addEventListener('click', function ()
+    {
+        const type = confirmPassword.getAttribute('type') == 'password' ? 'text' : 'password';
+        confirmPassword.setAttribute('type', type);
+        this.classList.toggle('fa-eye-slash');
+        this.classList.toggle('fa-eye');
+    });
+
+    // date validation client-side
+        document.addEventListener('DOMContentLoaded', function () {
+        const birthInput = document.querySelector('#BirthDate');
+
+        const errorSpan = document.createElement('span');
+        errorSpan.classList.add('text-danger');
+        birthInput.parentNode.appendChild(errorSpan);
+
+        birthInput.addEventListener('input', function () {
+            const value = this.value;
+            errorSpan.textContent = '';
+
+            if (!value) return;
+
+            const enteredDate = new Date(value);
+            const today = new Date();
+            const enteredYear = enteredDate.getFullYear();
+
+            if (enteredDate > today) {
+                errorSpan.textContent = 'A data de nascimento não pode estar no futuro';
+                return;
+            }
+
+            if (enteredYear < 1000 || enteredYear > 9999) {
+                errorSpan.textContent = 'O ano deve conter exatamente 4 dígitos';
+                return;
+            }
+
+            let age = today.getFullYear() - enteredDate.getFullYear();
+            const monthDiff = today.getMonth() - enteredDate.getMonth();
+            const dayDiff = today.getDate() - enteredDate.getDate();
+
+            if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+                age--;
+            }
+
+            if (age < 14) {
+                errorSpan.textContent = 'Você deve ter pelo menos 14 anos';
+                return;
+            }
+        });
+    });
+</script>
 
 
 @section Scripts

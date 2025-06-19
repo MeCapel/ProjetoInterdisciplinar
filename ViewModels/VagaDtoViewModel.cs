@@ -7,6 +7,7 @@ namespace ProjetoInterdisciplinar.ViewModels
     {
         [Required(ErrorMessage = "Este campo é necessário")]
         [StringLength(50, MinimumLength = 2, ErrorMessage = "Entre 2 - 50 caracteres")]
+        [RegularExpression(@"^[a-zA-Z]+[ a-zA-Z-_]*$", ErrorMessage = "Somente letras")]
         [Display(Name = "Cargo")]
         public string Cargo { get; set; }
 

@@ -35,17 +35,20 @@
 
 
                     <!-- Senha -->
-                    <div class="form-group">
+                    <div class="form-group mb-4">
                         <div class="d-flex justify-content-between">
                             <label asp-for="Password" class="form-label"></label>
                             <a asp-controller="Account" asp-action="VerifyEmail" class="text-decoration-none">Esqueceu a senha?</a>
                         </div>
-                        <input class="col-12 form-control border border-dark rounded-2 mb-4" asp-for="Password">
+                        <div class="position-relative">
+                            <input id="password" class="col-12 form-control border border-dark rounded-2 pe-5" asp-for="Password" type="password">
+                            <i class="fa-regular fa-eye-slash position-absolute" id="eyeBtn" style=" top: 50%; right: 20px; transform: translateY(-50%); cursor: pointer;"></i>
+                        </div>
                         <span asp-validation-for="Password" class="text-danger"></span>
                     </div>
 
 
-                    <!-- Lembre-se de mim -->
+                    <!-- Lembre-se de mim
                     <div class="form-group form-check">
                         <label class="form-check-label">
                             <input class="col-12 form-check-input border border-dark rounded-2 mb-4" asp-for="RememberMe">
@@ -53,11 +56,11 @@
                         </label>
                         <span asp-validation-for="RememberMe" class="text-danger"></span>
                     </div>
-
+                     -->
 
 
                     <div class="container d-flex justify-content-center py-3">
-                        <input class="col-12 btn btn-dark border border-dark" type="submit" value="Login">
+                        <input class="col-3 btn btn-dark border border-dark" type="submit" value="Login">
                     </div>
 
                     <div class="text-center">
@@ -69,6 +72,19 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    const eyeBtn = document.getElementById('eyeBtn');
+    const password = document.getElementById('password');
+    eyeBtn.addEventListener('click', function () 
+    {
+        const type = password.getAttribute('type') == 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        this.classList.toggle('fa-eye-slash');
+        this.classList.toggle('fa-eye');
+    });
+</script>
 
 
 @section Scripts

@@ -133,8 +133,9 @@ namespace ProjetoInterdisciplinar.Controllers
                 return RedirectToAction("AccessDenied", "Home");
             }
 
-
-            ViewData["VagaId"] = vaga.Id;
+            //var vagas = _context.Vagas
+            //            .Include(v => v.PJ)
+            //            .ToList();
 
 
             if (user.Discriminator == "PJ")

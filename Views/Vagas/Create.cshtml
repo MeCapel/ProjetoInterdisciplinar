@@ -40,7 +40,7 @@
                 <!-- Salario -->
                 <div class="form-group">
                     <label asp-for="Salario"></label>
-                    <input class="form-control border border-dark rounded-2 mb-4" type="text" asp-for="Salario">
+                    <input class="form-control border border-dark rounded-2 mb-4" type="text" asp-for="Salario" id="salario">
                     <span asp-validation-for="Salario" class="text-danger"></span>
                 </div>
 
@@ -57,7 +57,7 @@
                 </div>
 
                 <div class="text-center">
-                    <a asp-controller="Vagas" asp-action="Index" class="text-decoration-none">Voltar</a>
+                    <a asp-controller="Home" asp-action="Index" class="text-decoration-none">Voltar</a>
                 </div>
 
             </form>
@@ -65,3 +65,26 @@
     </div>
 </div>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const salario = document.getElementById('salario');
+
+    const errorSpan = document.createElement('span');
+    errorSpan.classList.add('text-danger');
+    salario.parentNode.appendChild(errorSpan);
+
+    salario.addEventListener('input', function () {
+            const value = parseFloat(this.value);
+            errorSpan.textContent = '';
+
+            if (isNaN(value)) return;
+
+            if (value <= 0 || value > 999999)
+            {
+                errorSpan.textContent = 'O saláro deve ser maior que 0  menor que 999999';
+                return;
+            }
+        });
+    });
+
+</script>
